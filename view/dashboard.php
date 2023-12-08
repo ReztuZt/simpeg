@@ -225,7 +225,7 @@ if (isset($_SESSION['nama_simpeg'], $_SESSION['username_simpeg'], $_SESSION['bag
                 <li><a href="index.php?controller=kategori&method=jenis"><i class="fa fa-circle-o"></i> Data Jenis Kepegawaian</a></li>
                 <li><a href="index.php?controller=kategori&method=status"><i class="fa fa-circle-o"></i> Data Status Kepegawaian</a></li>
                 <li><a href="index.php?controller=golongan&method=golongan"><i class="fa fa-circle-o"></i> Data Golongan Ijasah</a></li>
-                
+                <li><a href="index.php?controller=sk&method=sk"><i class="fa fa-circle-o"></i> Data SK</a></li>
                 <li><a href="index.php?controller=pelanggaran&method=pelanggaran"><i class="fa fa-circle-o"></i> Data History Pelanggaran</a></li>
                 <li><a href="index.php?controller=upskill&method=upskill"><i class="fa fa-circle-o"></i> Data Up Skilling</a></li>
 
@@ -241,6 +241,12 @@ if (isset($_SESSION['nama_simpeg'], $_SESSION['username_simpeg'], $_SESSION['bag
                 <i class="fa fa-laptop"></i> <span>Data Freelance</span>
               </a>
             </li>
+            <li>
+              <a href="index.php?controller=proyek&method=proyek">
+                <i class="fa fa-tasks"></i> <span>Project</span>
+              </a>
+            </li>
+        
             <li>
               <a href="index.php?controller=gaji&method=select">
                 <i class="fa fa-money"></i> <span>Data Penggajian</span>

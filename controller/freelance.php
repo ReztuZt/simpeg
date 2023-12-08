@@ -110,12 +110,13 @@ function tambahData() {
 				$no_telp	= $_POST['no_telp'];
 				$keterangan 	= $_POST['keterangan'];
 				$code 	= $_POST['code'];
+				$alamat 	= $_POST['alamat'];
 				
 
 				
 				// DARI MODEL
 				// MENGARAH KE METHOD DI CLASS MODEL PENDUDUK
-				$data			= $this->freelance->dataUpdate_freelance($id,$nama,$email,$no_telp,$keterangan,$code);
+				$data			= $this->freelance->dataUpdate_freelance($id,$nama,$email,$no_telp,$keterangan,$code,$alamat);
 				
 				// DARI VIEW
 				// MENGARAHKAN KE FILE VIEW/SELECT.PHP

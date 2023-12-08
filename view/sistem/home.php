@@ -118,11 +118,7 @@
    <section class="content-header">
      <section class="content-header bg-teal" style="border-radius: 5px;">
 
-       <marquee><b>ssSelamat Datang Di Sistem Informasi Kenaikan Pangkat, Kenaikan Gaji Berkala dan Arsip Kepegawaian<?php
-                                                                                                                      echo $row_data['nama'];
-                                                                                                                      ?> <?php
-                                                                                                                          echo $row_data['instansi'];
-                                                                                                                          ?>
+       <marquee><b>Manajemen Kenaikan Pangkat, Kenaikan Gaji Berkala, dan Arsip Kepegawaian
          </b></marquee>
      </section>
    </section>
@@ -175,6 +171,29 @@
            <a href="index.php?controller=pegawai&method=select" class="small-box-footer">Lihat Data Pegawai <i class="fa fa-arrow-circle-right"></i></a>
          </div>
        </div>
+
+       <!-- Informasi Proyek Aktif -->
+       <div class="col-lg-3 col-xs-6">
+   <!-- small box for jumlah proyek aktif -->
+   <div class="small-box bg-green">
+      <div class="inner">
+         <p>Proyek Aktif</p>
+         <?php
+            // Query DQL untuk menghitung jumlah proyek aktif
+            $query = "SELECT COUNT(*) AS jumlah_proyek_aktif FROM proyek WHERE status_proyek = 'Aktif'";
+            $result = mysqli_query($koneksi, $query);
+            $row = mysqli_fetch_assoc($result);
+            $jml_proyek_aktif = $row['jumlah_proyek_aktif'];
+         ?>
+         <p style="font-size: 25px;" align="center"><b><?php echo $jml_proyek_aktif; ?></b></p>
+      </div>
+      <div class="icon">
+         <i class="fa fa-cogs"></i>
+      </div>
+      <a href="index.php?controller=proyek&method=proyek" class="small-box-footer">Lihat Proyek Aktif <i class="fa fa-arrow-circle-right"></i></a>
+   </div> 
+</div>
+       
 
        <div class="col-lg-3 col-xs-6">
          <!-- small box -->
