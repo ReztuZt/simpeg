@@ -15,7 +15,7 @@ if ($_SESSION['level_simpeg']=="admin") {
             </section>
             <section class="content">
              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-danger"><li class="fa fa-plus"></li> Tambah Data</button>
-             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-nama"><li class="fa fa-plus"></li> Tambah Nama</button>
+   
              <br>
              <br>
             <!-- INI UNTUK ISI -->
@@ -30,7 +30,7 @@ if ($_SESSION['level_simpeg']=="admin") {
                         <!-- INI BAGIAN ISI UTAMA -->
                         <div class="panel-body table-responsive">
                             <!-- INI BAGIAN TABEL -->
-                             <table width="100%" id="tabel" class="table table-striped table-bordered table-hover">
+                             <table width="100%" id="tabel" class="table table-bordered table-hover">
                                 <thead>
                                     <tr class="odd bg-gray">
                                         <th width="1%"><center>No</center></th>
@@ -288,6 +288,20 @@ if ($_SESSION['level_simpeg']=="admin") {
             <td>
                 <div class="modal-body">
                     <input type="text" name="keterangan" id="keterangan" class="form-control" placeholder="Keterangan" required oninvalid="this.setCustomValidity('Masukkan Keterangan')" oninput="setCustomValidity('')" autocomplete="off">
+                </div>
+            </td>
+        </tr>
+       <tr>
+            <td>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>code</label>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="modal-body">
+                    <input type="text" name="code" id="code" class="form-control" placeholder="code" required oninvalid="this.setCustomValidity('Masukkan code')" oninput="setCustomValidity('')" autocomplete="off">
                 </div>
             </td>
         </tr>

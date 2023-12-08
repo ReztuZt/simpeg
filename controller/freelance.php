@@ -54,9 +54,10 @@
 			$email = $_POST['email'];
 			$no_telp = $_POST['no_telp'];
 			$keterangan = $_POST['keterangan'];
+			$code = $_POST['code'];
 	
 			// DARI MODEL
-			$data = $this->freelance->dataInsert_freelance($nama, $email, $no_telp, $keterangan);
+			$data = $this->freelance->dataInsert_freelance($nama, $email, $no_telp, $keterangan, $code);
 	
 			// DARI VIEW
 			if ($data == TRUE) {
@@ -130,6 +131,23 @@ function tambahData() {
 						  </script>";
 				}
 			}
+
+//addphoto
+function uploadPhoto($freelanceCode, $photoFile) {
+	if ($this->model_freelance->uploadPhoto($freelanceCode, $photoFile)) {
+		// Foto diunggah dengan sukses
+		// Redirect atau tampilkan pesan sukses
+		header("Location: index.php?controller=your_controller&method=your_method");
+	} else {
+		// Tangani kasus ketika pengunggahan gagal
+		// Redirect atau tampilkan pesan error
+		echo "Pengunggahan gagal!";
+	}
+}
+
+
+
+
 		
 		// FUNCTION UNTUK MENANGANI PROSES DELETE
 			function delete_freelance() {
@@ -158,6 +176,6 @@ function tambahData() {
 						  </script>";
 				}
 			}
-
-	}
+		}
+	
 ?>

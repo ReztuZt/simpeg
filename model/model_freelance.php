@@ -36,11 +36,11 @@
 			}
 		
 		// QUERY UNTUK MEMASUKKAN DATA (INSERT)
-			function dataInsert_freelance($nama, $email, $no_telp, $keterangan) {
+			function dataInsert_freelance($nama, $email, $no_telp, $keterangan,$code) {
 				$koneksi = $this->koneksi;
 
 				// SQL
-				$query = "INSERT INTO freelance (nama, email, no_telp, keterangan) VALUES ('$nama', '$email', '$no_telp', '$keterangan')";
+				$query = "INSERT INTO freelance (nama, email, no_telp, keterangan, code) VALUES ('$nama', '$email', '$no_telp', '$keterangan','$code')";
 
 				$sql		= mysqli_query($koneksi,$query);
 				
@@ -52,6 +52,49 @@
 					return FALSE;
 				}
 			}
+
+
+		// add photo
+
+		function uploadPhoto($freelanceCode, $photoFile) {
+			// Implementasikan logika untuk mengunggah foto ke server Anda
+			// Perbarui kolom 'photo' dalam database dengan jalur file yang baru
+	
+			// Contoh:
+			$targetDirectory = "uploads/";
+			$targetFile = $targetDirectory . basename($photoFile["name"]);
+	
+			if (move_uploaded_file($photoFile["tmp_name"], $targetFile)) {
+				// Perbarui kolom 'photo' dalam database dengan $targetFile
+				$this->updatePhotoPath($freelanceCode, $targetFile);
+				return true;
+			} else {
+				return false;
+			}
+		}
+	
+		// Fungsi untuk menghapus foto
+		public function deletePhoto($freelanceCode) {
+			// Implementasikan logika untuk menghapus foto dari server Anda
+			// Perbarui kolom 'photo' dalam database menjadi NULL atau string kosong
+	
+			// Contoh:
+			$this->updatePhotoPath($freelanceCode, null);
+			return true;
+		}
+	
+		// Fungsi untuk memperbarui jalur foto dalam database
+		private function updatePhotoPath($freelanceCode, $photoPath) {
+			// Implementasikan logika untuk memperbarui kolom 'photo' dalam database
+			// Contoh (menggunakan MySQLi):
+			$query = "UPDATE freelances SET photo = ? WHERE code = ?";
+			$stmt = $this->conn->prepare($query);
+			$stmt->bind_param("ss", $photoPath, $freelanceCode);
+			$stmt->execute();
+			$stmt->close();
+		}
+
+
 			
 			//tamabhdata
 
