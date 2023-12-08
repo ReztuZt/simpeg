@@ -96,6 +96,10 @@ function tambahData() {
 }
 
 
+
+
+
+
 		// FUNCTION UNTUK MENANGANI PROSES INSERT KE TABEL
 			function update_freelance() {
 				// DARI CONTROLLER

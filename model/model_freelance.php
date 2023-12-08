@@ -138,6 +138,9 @@
 					return FALSE;
 				}
 			}
+
+
+			
 		
 		// QUERY UNTUK MENGHAPUS DATA (DELETE)
 			function dataDeletefreelance($id) {

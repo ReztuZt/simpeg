@@ -79,7 +79,13 @@ if ($_SESSION['level_simpeg']=="admin") {
             </td>
             <td>
                 <div class="modal-body">
-                    <input type="text" name="jenis_pelanggaran" value="<?php echo $row_pelanggaran['jenis_pelanggaran']; ?>" class="form-control" placeholder="Nama" required>
+                <select name="jenis_pelanggaran" id="jenis_pelanggaran" class="form-control" required oninvalid="this.setCustomValidity('Pilih Jenis Pelanggaran')" oninput="setCustomValidity('')" autocomplete="off">
+                <option value="" disabled selected>Pilih Jenis Pelanggaran</option>
+                <option value="SP1">SP1</option>
+                <option value="SP2">SP2</option>
+                <option value="SP3">SP3</option>
+                <!-- Add more options as needed -->
+            </select>
                 </div>
             </td>
         </tr>
@@ -93,7 +99,7 @@ if ($_SESSION['level_simpeg']=="admin") {
             </td>
             <td>
                 <div class="modal-body">
-                    <input type="tanggal_pelanggaran" name="tanggal_pelanggaran" value="<?php echo $row_pelanggaran['tanggal_pelanggaran']; ?>" class="form-control" placeholder="tanggal pelanggaran" required>
+                <input type="date" name="tanggal_pelanggaran" id="tanggal_pelanggaran" class="form-control" required oninvalid="this.setCustomValidity('Pilih tanggal pelanggaran')" oninput="setCustomValidity('')" autocomplete="off">
                 </div>
             </td>
         </tr>
@@ -202,35 +208,43 @@ if ($_SESSION['level_simpeg']=="admin") {
               </div>
               <form role="form" method="POST" action="index.php?controller=pelanggaran&method=insert_pelanggaran" enctype="multipart/form-data">
     <table width="100%" class="modal-body">
-        <tr>
-            <td>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Jenis Pelanggaran</label>
-                        <input type="hidden" name="code" value="<?php echo $row_pelanggaran['id'];?>"></input>
-                    </div>
-                </div>
-            </td>
-            <td>
-                <div class="modal-body">
-                    <input type="text" name="jenis_pelanggaran" id="jenis_pelanggaran" class="form-control" placeholder="Nama" required oninvalid="this.setCustomValidity('Masukkan Jenis Pelanggaran')" oninput="setCustomValidity('')" autocomplete="off">
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>tanggal_pelanggaran</label>
-                    </div>
-                </div>
-            </td>
-            <td>
-                <div class="modal-body">
-                    <input type="text" name="tanggal_pelanggaran" id="tanggal_pelanggaran" class="form-control" placeholder="tannggal pelanggaran" required oninvalid="this.setCustomValidity('Masukkan tanggal pelanggaran ')" oninput="setCustomValidity('')" autocomplete="off">
-                </div>
-            </td>
-        </tr>
+    <tr>
+    <td>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Jenis Pelanggaran</label>
+                <input type="hidden" name="code" value="<?php echo $row_pelanggaran['id']; ?>">
+            </div>
+        </div>
+    </td>
+    <td>
+        <div class="modal-body">
+            <select name="jenis_pelanggaran" id="jenis_pelanggaran" class="form-control" required oninvalid="this.setCustomValidity('Pilih Jenis Pelanggaran')" oninput="setCustomValidity('')" autocomplete="off">
+                <option value="" disabled selected>Pilih Jenis Pelanggaran</option>
+                <option value="SP1">SP1</option>
+                <option value="SP2">SP2</option>
+                <option value="SP3">SP3</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Tanggal Pelanggaran</label>
+            </div>
+        </div>
+    </td>
+    <td>
+        <div class="modal-body">
+            <input type="date" name="tanggal_pelanggaran" id="tanggal_pelanggaran" class="form-control" required oninvalid="this.setCustomValidity('Pilih tanggal pelanggaran')" oninput="setCustomValidity('')" autocomplete="off">
+        </div>
+    </td>
+</tr>
+
         <tr>
             <td>
                 <div class="modal-body">

@@ -29,44 +29,51 @@ class model_upskill extends database
     
 
     // QUERY UNTUK MEMASUKKAN DATupsA (INSERT)
-    function dataInsert_Keterangan($keterangan)
+    function dataInsert_Upskill($id_pengguna, $nama_keterampilan, $tanggal_mulai, $penyedia, $status)
     {
         $koneksi = $this->koneksi;
-
+    
         // SQL
-        $query = "INSERT INTO upskill (jenis_pelanggaran, keterangan) VALUES ('$keterangan')";
-
+        $query = "INSERT INTO upskill (id_pengguna, nama_keterampilan, tanggal_mulai, penyedia, status) 
+                  VALUES ('$id_pengguna', '$nama_keterampilan', '$tanggal_mulai', '$penyedia', '$status')";
+    
         $sql = mysqli_query($koneksi, $query);
-
+    
         // CEK SQL
         if ($sql) {
             return TRUE;
         } else {
             echo mysqli_error($koneksi); // Menampilkan pesan kesalahan SQL
             return FALSE;
-        }
+        } 
     }
+    
 
 
     // QUERY UNTUK MENGUBAH DATA (UPDATE)
-    function dataUpdate_upskill($id, $keterangan)
+    function dataUpdate_upskill($id, $nama_keterampilan, $tanggal_mulai, $penyedia, $status)
     {
         $koneksi = $this->koneksi;
+    
         // SQL
-        $query        = "UPDATE upskill SET
-								keterangan 		= '$keterangan'
-							   WHERE id 	= '$id'
-							   ";
-
-        $sql        = mysqli_query($koneksi, $query);
-
+        $query = "UPDATE upskill SET
+                    nama_keterampilan = '$nama_keterampilan',
+                    tanggal_mulai = '$tanggal_mulai',
+                    penyedia = '$penyedia',
+                    status = '$status'
+                  WHERE id = '$id'";
+    
+        $sql = mysqli_query($koneksi, $query);
+    
         // CEK SQL
         if ($sql == TRUE) {
             return TRUE;
         } else {
+            echo mysqli_error($koneksi); // Menampilkan pesan kesalahan SQL
             return FALSE;
         }
     }
+    
 
 
 

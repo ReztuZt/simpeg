@@ -43,18 +43,20 @@ class upskill
     {
         // DARI VIEW
         // MENAMPUNG DATA YANG DIINPUTKAN
-        $keterangan        = $_POST['keterangan'];
-   
-
-
+        $id_pengguna = $_POST['id_pengguna'];  // Gantilah ini sesuai dengan cara Anda mendapatkan id_pengguna (bisa dari session atau input form)
+        $nama_keterampilan = $_POST['nama_keterampilan'];
+        $tanggal_mulai = $_POST['tanggal_mulai'];
+        $penyedia = $_POST['penyedia'];
+        $status = $_POST['status'];
+    
         // DARI MODEL
         // MENGARAH KE METHOD DI CLASS MODEL PENDUDUK
-        $data            = $this->upskill->dataInsert_Keterangan($keterangan);
-
+        $data = $this->upskill->dataInsert_Upskill($id_pengguna, $nama_keterampilan, $tanggal_mulai, $penyedia, $status);
+    
         // DARI VIEW
         // MENGARAHKAN KE FILE VIEW/SELECT.PHP
         // JIKA HASIL PROSES INSERT BERHASIL
-        if ($data         == TRUE) {
+        if ($data == TRUE) {
             echo "<script>
               window.location = 'index.php?controller=upskill&method=upskill'; 
               </script>";
@@ -68,38 +70,40 @@ class upskill
               </script>";
         }
     }
+    
     // FUNCTION UNTUK MENANGANI PROSES INSERT KE TABEL
     function dataupdate_upskill()
     {
         // DARI CONTROLLER
         // MENAMPUNG DATA YANG DIUBAH
-        $id        = $_POST['id'];
-        $keterangan     = $_POST['keterangan'];
-        $nip     = $_POST['nip'];
-
-
-
+        $id = $_POST['id'];
+        $nama_keterampilan = $_POST['nama_keterampilan'];
+        $tanggal_mulai = $_POST['tanggal_mulai'];
+        $penyedia = $_POST['penyedia'];
+        $status = $_POST['status'];
+    
         // DARI MODEL
         // MENGARAH KE METHOD DI CLASS MODEL PENDUDUK
-        $data            = $this->upskill->dataUpdate_upskill($id, $keterangan);
-
+        $data = $this->upskill->dataUpdate_upskill($id, $nama_keterampilan, $tanggal_mulai, $penyedia, $status);
+    
         // DARI VIEW
         // MENGARAHKAN KE FILE VIEW/SELECT.PHP
         // JIKA HASIL PROSES UPDATE BERHASIL
-        if ($data         == TRUE) {
+        if ($data == TRUE) {
             echo "<script> 
-						  window.location = 'index.php?controller=upskill&method=upskill'; 
-						  </script>";
+                              window.location = 'index.php?controller=upskill&method=upskill'; 
+                              </script>";
         }
         // MENGARAHKAN KE FILE VIEW/UPDATE.PHP
         // JIKA HASIL PROSES UPDATE GAGAL
         else {
             echo "<script> 
-						  alert('Proses Update Gagal!');
-						  window.location = 'index.php?controller=upskill&method=upskill'; 
-						  </script>";
+                              alert('Proses Update Gagal!');
+                              window.location = 'index.php?controller=upskill&method=upskill'; 
+                              </script>";
         }
     }
+    
 
 
 

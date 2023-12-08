@@ -5,6 +5,7 @@
 // Assuming $data_freelance is a valid mysqli result set
 // Fetch the data for the freelance details
 $row_freelance = mysqli_fetch_array($data_freelance);
+$photoPath = $row_freelance['foto_path']; // Ganti 'foto_path' dengan nama kolom yang sesuai di tabel Anda
 ?>
 
 <!-- Header Section -->
@@ -34,27 +35,8 @@ $row_freelance = mysqli_fetch_array($data_freelance);
                 </div>
 
                 <!-- Panel Body for Freelance Details -->
-                <div class="panel-body">
-                    <!-- Displaying Freelance Details using Bootstrap Grid System -->
-                    <div class="row">
-                        <!-- Column for Photo -->
-                        <div class="col-md-3">
-    <div class="form-group text-center">
-        <img src="<?php echo $row_freelance['photo']; ?>" alt="Freelance Photo" class="img-responsive img-circle" style="max-width: 150px; margin: 0 auto;">
+            
 
-        <!-- Upload Photo Form -->
-        <form action="upload_photo.php" method="post" enctype="multipart/form-data">
-            <label for="photo">Upload Photo:</label>
-            <input type="file" name="photo" id="photo" accept="image/*">
-            <button type="submit" class="btn btn-primary">Upload</button>
-        </form>
-
-        <!-- Delete Photo Form -->
-        <form action="delete_photo.php" method="post" onsubmit="return confirm('Are you sure you want to delete this photo?');">
-            <input type="hidden" name="photo_id" value="<?php echo $row_freelance['id']; ?>">
-            <button type="submit" class="btn btn-danger">Delete Photo</button>
-        </form>
-    </div>
                                 <!-- Column for Other Details -->
                                 <div class="col-md-9">
                                     <div class="form-group">
