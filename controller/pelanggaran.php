@@ -58,7 +58,7 @@ class pelanggaran
         // JIKA HASIL PROSES INSERT BERHASIL
         if ($data         == TRUE) {
             echo "<script>
-                  window.location = 'index.php?controller=sk&method=sk'; 
+                  window.location = 'index.php?controller=pelanggaran&method=pelanggaran'; 
                   </script>";
         }
         // MENGARAHKAN KE FILE VIEW/INSERT.PHP
@@ -66,7 +66,7 @@ class pelanggaran
         else {
             echo "<script> 
                   alert('Proses Insert Gagal!');
-                  window.location = 'index.php?controller=sk&method=sk'; 
+                  window.location = 'index.php?controller=pelanggaran&method=pelanggaran'; 
                   </script>";
         }
     }
@@ -210,6 +210,11 @@ class pelanggaran
         }
     }
 
+
+
+
+    
+
     function insert_upskill()
     {
         // Mengambil nilai keterangan dan nip dari form
@@ -236,37 +241,38 @@ class pelanggaran
         }
     }
     	// FUNCTION UNTUK MENANGANI PROSES INSERT KE TABEL
-			function update_pelanggaran() {
-				// DARI CONTROLLER
-				// MENAMPUNG DATA YANG DIUBAH
-                $id        = $_POST['id'];
-                $jenis_pelanggaran    = $_POST['jenis_pelanggaran'];
-                $tanggal_pelanggaran    = $_POST['tanggal_pelanggaran'];
-                $keterangan     = $_POST['keterangan'];
-              
+        function update_pelanggaran() {
+            // DARI CONTROLLER
+            // MENAMPUNG DATA YANG DIUBAH
+            $id		= $_POST['id'];
+            $jenis_pelanggaran	= $_POST['jenis_pelanggaran'];
+            $tanggal_pelanggaran	= $_POST['tanggal_pelanggaran'];
+            $keterangan 	= $_POST['keterangan'];
 
-				
-				// DARI MODEL
-				// MENGARAH KE METHOD DI CLASS MODEL PENDUDUK
-                $data            = $this->pelanggaran->update_pelanggaran($id, $jenis_pelanggaran, $tanggal_pelanggaran, $keterangan );
+            
 
-				// DARI VIEW
-				// MENGARAHKAN KE FILE VIEW/SELECT.PHP
-				// JIKA HASIL PROSES UPDATE BERHASIL
-				if($data 		== TRUE) {
-					echo "<script> 
-						  window.location = 'index.php?controller=pelanggaran&method=update_pelanggaran'; 
-						  </script>";
-				
-				} 
-				// MENGARAHKAN KE FILE VIEW/UPDATE.PHP
-				// JIKA HASIL PROSES UPDATE GAGAL
-				else {
-					echo "<script> 
-						  alert('Proses Update Gagal!');
-						  window.location = 'index.php?controller=pelanggaran&method=update_pelanggaran'; 
-						  </script>";
-				}
-			}
+            
+            // DARI MODEL
+            // MENGARAH KE METHOD DI CLASS MODEL PENDUDUK
+            $data			= $this->pelanggaran->dataUpdate_pelanggaran($id,$jenis_pelanggaran,$tanggal_pelanggaran,$keterangan);
+            
+            // DARI VIEW
+            // MENGARAHKAN KE FILE VIEW/SELECT.PHP
+            // JIKA HASIL PROSES UPDATE BERHASIL
+            if($data 		== TRUE) {
+                echo "<script> 
+                      window.location = 'index.php?controller=pelanggaran&method=pelanggaran'; 
+                      </script>";
+            
+            } 
+            // MENGARAHKAN KE FILE VIEW/UPDATE.PHP
+            // JIKA HASIL PROSES UPDATE GAGAL
+            else {
+                echo "<script> 
+                      alert('Proses Update Gagal!');
+                      window.location = 'index.php?controller=pelanggaran&method=pelanggaran'; 
+                      </script>";
+            }
+        }
 		
 }

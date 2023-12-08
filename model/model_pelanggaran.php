@@ -48,11 +48,13 @@ class model_pelanggaran extends database
 
 
     // QUERY UNTUK MENGUBAH DATA (UPDATE)
-    function dataUpdate_pelanggaran($id, $keterangan)
+    function dataUpdate_pelanggaran($id, $jenis_pelanggaran, $tanggal_pelanggaran, $keterangan)
     {
         $koneksi = $this->koneksi;
         // SQL
         $query        = "UPDATE pelanggaran SET
+        	jenis_pelanggaran 		= '$jenis_pelanggaran',
+            tanggal_pelanggaran 		= '$tanggal_pelanggaran',
 								keterangan 		= '$keterangan'
 							   WHERE id 	= '$id'
 							   ";
@@ -112,7 +114,7 @@ class model_pelanggaran extends database
         $koneksi = $this->koneksi;
 
         // SQL
-        $query = "INSERT INTO pelanggaran  VALUES ('$jenis_pelanggaran','$tanggal_pelanggaran','$keterangan')";
+        $query = "INSERT INTO pelanggaran (jenis_pelanggaran, tanggal_pelanggaran, keterangan) VALUES ('$jenis_pelanggaran', '$tanggal_pelanggaran','$keterangan')";
 
         $sql = mysqli_query($koneksi, $query);
 
@@ -164,12 +166,11 @@ class model_pelanggaran extends database
     {
         $koneksi = $this->koneksi;
         // SQL
-        $query        = "UPDATE sk SET
-           WHERE id 	= '$id'
-           jenis pelanggaran ='$jenis_pelanggaran'
-                       tanggal pelanggaran ='$tanggal_pelanggaran'
-                        keterangan 		= '$keterangan'";
-
+        $query = "UPDATE pelanggaran SET
+        jenis_pelanggaran = ?,
+        tanggal_pelanggaran = ?,
+        keterangan = ?
+      WHERE id = ?";
         $sql        = mysqli_query($koneksi, $query);
 
         // CEK SQL
