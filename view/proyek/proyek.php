@@ -76,7 +76,7 @@ if ($_SESSION['level_simpeg'] == "admin") {
                                             <td>
                                                 <center>
                                                     <a type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#freelance<?php echo $nomor; ?>" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fa fa-edit fa-fw"></i></a>
-                                                    <a href="index.php?controller=freelance&method=detail&code=<?php echo $row_freelance['code']; ?>" class="btn btn-primary btn-xs" role="button" data-toggle="tooltip" data-placement="top" title="Detail"> <i class="fa fa-info fa-fw"></i> </a>
+
                                                     <div class="modal modal-success fade" id="freelance<?php echo $nomor; ?>">
                                                         <div class="modal-dialog modal-md">
                                                             <div class="modal-content">

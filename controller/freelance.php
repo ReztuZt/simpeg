@@ -138,17 +138,8 @@ function tambahData() {
 			}
 
 //addphoto
-function uploadPhoto($freelanceCode, $photoFile) {
-	if ($this->model_freelance->uploadPhoto($freelanceCode, $photoFile)) {
-		// Foto diunggah dengan sukses
-		// Redirect atau tampilkan pesan sukses
-		header("Location: index.php?controller=your_controller&method=your_method");
-	} else {
-		// Tangani kasus ketika pengunggahan gagal
-		// Redirect atau tampilkan pesan error
-		echo "Pengunggahan gagal!";
-	}
-}
+
+
 
 
 
