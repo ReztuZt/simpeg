@@ -78,8 +78,19 @@
 				
 				return $sql;
 			}
+				// QUERY UNTUK MENAMPILKAN DATA (SELECT) pelanggaran
+				function dataWarning($nip) {
+					$koneksi = $this->koneksi;
+					// SQL
+					$query			= "SELECT * FROM pelanggaran WHERE nip ='$nip' ORDER BY id DESC";
+					
+					$sql			= mysqli_query($koneksi,$query);
+					
+					return $sql;
+				}
+			
 		
-		
+
 		// QUERY UNTUK MEMASUKKAN DATA (INSERT)
 			function dataInsert($nip,$nama,$tempat_lahir,$tgl_lahir,$gender,$agama,$kebangsaan,$jumlah_keluarga,$alamat,$sk_terakhir,$pangkat,$tmt_golongan,$jenis,$tmt_capeg,$status,$jabatan,$digaji,$gaji_pokok,$masa_golongan,$masa_keseluruhan,$npwp,$rt,$rw,$desa,$kecamatan,$kabupaten,$wa) {
 				$koneksi = $this->koneksi;

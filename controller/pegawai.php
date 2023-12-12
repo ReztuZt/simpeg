@@ -123,6 +123,9 @@
 				include "view/dashboard.php";
 			}
 
+
+
+
 		// FUNCTION UNTUK MENANGANI PROSES SELECT
 			function info() {
 				// MODEL

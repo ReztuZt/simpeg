@@ -193,10 +193,37 @@
       <a href="index.php?controller=proyek&method=proyek" class="small-box-footer">Lihat Proyek Aktif <i class="fa fa-arrow-circle-right"></i></a>
    </div> 
 </div>
+<div class="col-lg-3 col-xs-6">
+   <!-- small box for jumlah proyek aktif -->
+   <div class="small-box bg-yellow">
+   <div class="inner">
+    <p>Jumlah Freelance</p>
+    <?php
+    // Ganti 'nama' dengan nama kolom yang sesuai di tabel freelance
+    $queryFreelance = "SELECT COUNT(DISTINCT nama) AS jumlah_freelance FROM freelance";
+    $resultFreelance = mysqli_query($koneksi, $queryFreelance);
+    
+    if ($resultFreelance) {
+        $rowFreelance = mysqli_fetch_assoc($resultFreelance);
+        $jumlahFreelance = $rowFreelance['jumlah_freelance'];
+    } else {
+        $jumlahFreelance = 0; // Atau handle error sesuai kebutuhan Anda
+    }
+    ?>
+    <p style="font-size: 25px;" align="center"><b><?php echo $jumlahFreelance; ?></b></p>
+</div>
+
+      <div class="icon">
+         <i class="fa fa-users"></i>
+      </div>
+      <a href="index.php?controller=freelance&method=freelance" class="small-box-footer">Lihat  Jumlah Freelance <i class="fa fa-arrow-circle-right"></i></a>
+   </div> 
+</div>
+
        
 
        <div class="col-lg-3 col-xs-6">
-         <!-- small box -->
+         <!-- small box
          <div class="small-box bg-blue">
            <?php
             $jml_pengguna = mysqli_num_rows($data_pengguna);
@@ -211,7 +238,7 @@
            <a href="index.php?controller=user&method=pengguna" class="small-box-footer">Lihat Data Pengguna <i class="fa fa-arrow-circle-right"></i></a>
          </div>
        </div>
-     </div>
+     </div> -->
      <section>
        <div id="map" style="widht:100%;height:400px;"></div>
      </section>

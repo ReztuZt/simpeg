@@ -28,6 +28,9 @@
 
              <a href="index.php?controller=pegawai&method=berkas&nip=<?php echo $row_pegawai['nip'];?>" class="btn btn-md btn-info" data-toggle="tooltip" data-placement="top" title="Lampiran"><i class="fa fa-file-archive-o fa-fw"></i>Lampiran</a>
 
+             
+             <a href="index.php?controller=warning&method=warning&nip=<?php echo $row_pegawai['nip'];?>" class="btn btn-md btn-info" data-toggle="tooltip" data-placement="top" title="Lampiran"><i class="fa fa-exclamation"></i>Pelanggaran</a>
+
              <div class="pull-right">
              <form method="post" action="laporan/surat_keterangan.php" target="_blank">
                <input name="pencetak" type="hidden" value="<?php echo $_SESSION['nama_simpeg'];?>"></input>

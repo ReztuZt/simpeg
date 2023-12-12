@@ -3,6 +3,7 @@
 include("config/database.php");
 // INCLUDE MODEL DARI FOLDER MODEL 
 include("model/model_pelanggaran.php");
+include("model/model_pegawai.php");
 include("model/model_sistem.php");
 
 // CLASS PENDUDUK
@@ -12,6 +13,7 @@ class pelanggaran
     // DIGUNAKAN UNTUK MENJADI OBJEK SAAT INSTANSIASI DI SINI
     public $pelanggaran;
     public $sistem;
+    public $pegawai;
 
     // METHOD
     // FUNCTION __CONSTRUCT UNTUK MENANGANI INSTANSIASI CLASS DARI MODEL 
@@ -20,6 +22,7 @@ class pelanggaran
         // INSTANSIASI CLASS MODEL PENDUDUK
         $this->pelanggaran    = new model_pelanggaran();
         $this->sistem    = new model_sistem();
+        $this->pegawai	= new model_pegawai();
     }
 
     // FUNCTION UNTUK MENANGANI PROSES SELECT
@@ -213,7 +216,7 @@ class pelanggaran
 
 
 
-    
+
 
     function insert_upskill()
     {
@@ -240,39 +243,70 @@ class pelanggaran
             </script>";
         }
     }
-    	// FUNCTION UNTUK MENANGANI PROSES INSERT KE TABEL
-        function update_pelanggaran() {
-            // DARI CONTROLLER
-            // MENAMPUNG DATA YANG DIUBAH
-            $id		= $_POST['id'];
-            $jenis_pelanggaran	= $_POST['jenis_pelanggaran'];
-            $tanggal_pelanggaran	= $_POST['tanggal_pelanggaran'];
-            $keterangan 	= $_POST['keterangan'];
+    // FUNCTION UNTUK MENANGANI PROSES INSERT KE TABEL
+    function update_pelanggaran()
+    {
+        // DARI CONTROLLER
+        // MENAMPUNG DATA YANG DIUBAH
+        $id        = $_POST['id'];
+        $jenis_pelanggaran    = $_POST['jenis_pelanggaran'];
+        $tanggal_pelanggaran    = $_POST['tanggal_pelanggaran'];
+        $keterangan     = $_POST['keterangan'];
 
-            
 
-            
-            // DARI MODEL
-            // MENGARAH KE METHOD DI CLASS MODEL PENDUDUK
-            $data			= $this->pelanggaran->dataUpdate_pelanggaran($id,$jenis_pelanggaran,$tanggal_pelanggaran,$keterangan);
-            
-            // DARI VIEW
-            // MENGARAHKAN KE FILE VIEW/SELECT.PHP
-            // JIKA HASIL PROSES UPDATE BERHASIL
-            if($data 		== TRUE) {
-                echo "<script> 
+
+
+        // DARI MODEL
+        // MENGARAH KE METHOD DI CLASS MODEL PENDUDUK
+        $data            = $this->pelanggaran->dataUpdate_pelanggaran($id, $jenis_pelanggaran, $tanggal_pelanggaran, $keterangan);
+
+        // DARI VIEW
+        // MENGARAHKAN KE FILE VIEW/SELECT.PHP
+        // JIKA HASIL PROSES UPDATE BERHASIL
+        if ($data         == TRUE) {
+            echo "<script> 
                       window.location = 'index.php?controller=pelanggaran&method=pelanggaran'; 
                       </script>";
-            
-            } 
-            // MENGARAHKAN KE FILE VIEW/UPDATE.PHP
-            // JIKA HASIL PROSES UPDATE GAGAL
-            else {
-                echo "<script> 
+        }
+        // MENGARAHKAN KE FILE VIEW/UPDATE.PHP
+        // JIKA HASIL PROSES UPDATE GAGAL
+        else {
+            echo "<script> 
                       alert('Proses Update Gagal!');
                       window.location = 'index.php?controller=pelanggaran&method=pelanggaran'; 
                       </script>";
-            }
         }
-		
+    }
+
+//detailpelanggaran
+function detail() {
+    // DARI CONTROLLER
+    // MENANGKAP NILAI NIK
+    $nip			= $_GET['nip'];
+
+    $data		 = $this->sistem->dataHome();
+    $data_pegawai = $this->pegawai->dataDetail($nip);
+
+    include "view/dashboard.php";
+}
+
+
+    //pelanggaran
+    function warning()
+    {
+        // MODEL
+        // MENGARAH KE METHOD DI CLASS MODEL AGAMA
+        $nip                    = $_GET['nip'];
+
+
+        $data                    = $this->sistem->dataHome();
+        $data_detail               = $this->pegawai->dataDetail($nip);
+        $data_Warning              = $this->pegawai->dataWarning($nip);
+
+        // VIEW
+        // MENGARAHKAN KE FILE VIEW/SELECT.PHP
+        include "view/dashboard.php";
+    }
+
+
 }
