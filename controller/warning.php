@@ -67,7 +67,54 @@
 				echo "<script>alert('Proses Update Gagal!');window.location = 'index.php?controller=warning&method=warning&nip=$nip';</script>";
 			}
 		}
+
+
+		// FUNCTION UNTUK MENANGANI PROSES INSERT KE TABEL
+		 function insert_warning() {
+        // Ambil NIP dari sesi atau tempat lain sesuai kebutuhan
+		$nip = $_POST['nip']; // Sesuaikan dengan cara Anda menyimpan NIP
+
+        // Ambil data dari formulir
+        $jenis_pelanggaran = $_POST['jenis_pelanggaran'];
+        $keterangan = $_POST['keterangan'];
+        $status = $_POST['status'];
+        $masa_berlaku = $_POST['masa_berlaku'];
+
+        // Panggil fungsi atau query untuk menyimpan data ke dalam tabel pelanggaran
+        $data_insert = $this->pelanggaran->tambahDataPelanggaran($nip, $jenis_pelanggaran, $keterangan, $status, $masa_berlaku);
+
+        // Lakukan pengalihan atau tampilkan pesan sesuai dengan hasil operasi penyimpanan
+        if ($data_insert) {
+			echo "<script>window.history.go(-1); location.reload();</script>";
+        } else {
+			echo "<script>alert('Proses Insert Gagal!'); window.history.go(-1); location.reload();</script>";
+        }
 		
+	}
+
+
+	//
+
+	function delete_warning() {
+		// DARI CONTROLLER
+		// MENANGKAP NILAI NIK
+		$id			= $_GET['id'];
+		$nip		= $_GET['nip'];
+
+		$data = $this->pelanggaran->dataDeleteWarning($id);
+	
+		/// DARI VIEW
+		// MENGARAHKAN KE FILE VIEW/SELECT.PHP
+		// JIKA HASIL PROSES DELETE BERHASIL
+		if($data 		== TRUE) {
+			echo "<script>window.history.go(-1); location.reload();</script>";
+		} 
+		// MENGARAHKAN KE FILE VIEW/SELECT.PHP
+		// JIKA HASIL PROSES DELETE GAGAL
+		else {
+			echo "<script>alert('Proses Insert Gagal!'); window.history.go(-1); location.reload();</script>";
+		}
+	}
 		
 		
 		}

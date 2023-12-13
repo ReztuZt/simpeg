@@ -1,6 +1,6 @@
-<title><?php echo $row_data['nama']; ?> | freelance </title>
+<title><?php echo $row_data['nama'];?> | Data Pelanggaran</title>
 <?php
-if ($_SESSION['level_simpeg'] == "admin") {
+    $row_pelanggaran = mysqli_fetch_array($data_pelanggaran);
 ?>
 
     <!-- INI UNTUK JUDUL -->
@@ -14,6 +14,7 @@ if ($_SESSION['level_simpeg'] == "admin") {
         </ol>
     </section>
     <section class="content">
+        
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-danger">
             <li class="fa fa-plus"></li> Tambah Data
         </button>
@@ -26,8 +27,12 @@ if ($_SESSION['level_simpeg'] == "admin") {
                 <div class="panel panel-default">
                     <!-- INI BAGIAN ISI UNTUK JUDUL TABEL -->
                     <div class="panel-heading bg-aqua">
-                        <i class="fa fa-sitemap fa-fw"></i> Pelanggaran Pegawai
-                    </div>
+                            <i class="fa fa-exclamation-triangle"></i> Pelanggaran 
+                            <div class="pull-right">
+                                <label class="label" style="font-size: 15px;"> Pegawai : <?php echo $row_pelanggaran['nip'];?>
+                                </label>
+                            </div>
+                        </div>
 
                     <!-- INI BAGIAN ISI UTAMA -->
                     <div class="panel-body table-responsive">
@@ -190,16 +195,25 @@ if ($_SESSION['level_simpeg'] == "admin") {
                         <h4 class="modal-title">Tambah Data Pelanggaran</h4>
                     </center>
                 </div>
-                <form role="form" method="POST" action="index.php?controller=pelanggaran&method=insertData" enctype="multipart/form-data">
+                <form role="form" method="POST" action="index.php?controller=warning&method=insert_warning" enctype="multipart/form-data">
                     <table width="100%" class="modal-body">
+                    <tr>
+            <td>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>NIP</label>
+                        <!-- Input untuk NIP, pengguna bisa mengisinya -->
+                        <input type="text" name="nip" id="nip" class="form-control" placeholder="NIP" required oninvalid="this.setCustomValidity('Masukkan NIP')" oninput="setCustomValidity('')" autocomplete="off">
+                    </div>
+                </div>
+            </td>
+        </tr>
                         <tr>
                             <td>
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label>Jenis Pelanggaran</label>
-                                        <input type="hidden" name="nip" value="<?php echo $row_detail['nip']; ?>"></input>
-                                        <input type="hidden" name="id" value="<?php echo $row_pelanggaran['id']; ?>"></input>
-                                        <input type="text" style="width: 100%" value="<?php echo $row_anak['nama']; ?>" name="nama" id="nama_anak" class="form-control" required="" autocomplete="off" />
+                                     
                                     </div>
                                 </div>
                             </td>
@@ -263,7 +277,5 @@ if ($_SESSION['level_simpeg'] == "admin") {
     </div>
 
 <?php
-} else {
-    echo "<script>window.history.back(); </script>";
-}
+
 ?>
