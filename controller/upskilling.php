@@ -10,7 +10,7 @@ class upskilling
 {
     // PROPERTY
     // DIGUNAKAN UNTUK MENJADI OBJEK SAAT INSTANSIASI DI SINI
-    public $upskilling;
+    public $upskill;
     public $sistem;
 
 
@@ -19,17 +19,18 @@ class upskilling
     function __construct()
     {
         // INSTANSIASI CLASS MODEL PENDUDUK
-        $this->upskilling    = new model_upskilling();
+        $this->upskill   = new model_upskilling();
         $this->sistem    = new model_sistem();
     }
 
     // FUNCTION UNTUK MENANGANI PROSES SELECT
     function upskilling()
     {
+        $nip    = $_GET['nip'];
         // MODEL
         // MENGARAH KE METHOD DI CLASS MODEL AGAMA
         $data                    = $this->sistem->dataHome();
-        $data_upskilling           = $this->upskilling->dataupskilling();
+        $data_upskill           = $this->upskill->dataupskill($nip);
 
 
         // VIEW
@@ -37,16 +38,60 @@ class upskilling
         include "view/dashboard.php";
     }
     //jika error ini yang dihapus
-    function detail()
+    // function detail()
+    // {
+    //     // DARI CONTROLLER
+    //     // MENANGKAP NILAI NIK
+    //     $nip            = $_GET['nip'];
+
+    //     $data         = $this->sistem->dataHome();
+    //     $data_upskilling = $this->upskill->dataDetail($nip);
+
+    //     include "view/dashboard.php";
+    // }
+
+    //updatewarning
+    function update_upskilling()
     {
-        // DARI CONTROLLER
-        // MENANGKAP NILAI NIK
-        $code            = $_GET['code'];
+        $id = $_POST['id'];
+        // Anggap Anda memiliki $nip, mungkin perlu mengambilnya dari suatu tempat
+        $nip = $_POST['nip'];
+        $nama_keterampilan = $_POST['nama_keterampilan'];
+        $tanggal_mulai = $_POST['tanggal_mulai'];
+        $status = $_POST['status'];
+        $penyedia = $_POST['penyedia'];
 
-        $data         = $this->sistem->dataHome();
-        $data_upskilling = $this->upskilling->dataDetail($code);
+        $data_insert = $this->upskill->dataUbahUpskilling($id, $nip, $nama_keterampilan, $tanggal_mulai, $status, $penyedia);
 
-        include "view/dashboard.php";
+        if ($data_insert == TRUE) {
+            echo "<script>window.location = 'index.php?controller=upskilling&method=upskilling&nip=$nip';</script>";
+        } else {
+            echo "<script>alert('Proses Update Gagal!');window.location = 'index.php?controller=upskilling&method=upskilling&nip=$nip';</script>";
+        }
     }
+
+    
+		// FUNCTION UNTUK MENANGANI PROSES INSERT KE TABEL
+		 function insert_upskilling() {
+            // Ambil NIP dari sesi atau tempat lain sesuai kebutuhan
+            $nip = $_POST['nip']; // Sesuaikan dengan cara Anda menyimpan NIP
+    
+            // Ambil data dari formulir
+            $nama_keterampilan = $_POST['nama_keterampilan'];
+            $tanggal_mulai = $_POST['tanggal_mulai'];
+            $status = $_POST['status'];
+            $penyedia = $_POST['penyedia'];
+    
+            // Panggil fungsi atau query untuk menyimpan data ke dalam tabel pelanggaran
+            $data_insert = $this->upskill->tambahDataUpskilling($nip, $nama_keterampilan, $tanggal_mulai, $status, $penyedia);
+    
+            // Lakukan pengalihan atau tampilkan pesan sesuai dengan hasil operasi penyimpanan
+            if ($data_insert) {
+                echo "<script>window.history.go(-1); location.reload();</script>";
+            } else {
+                echo "<script>alert('Proses Insert Gagal!'); window.history.go(-1); location.reload();</script>";
+            }
+            
+        }
+
 }
-?>

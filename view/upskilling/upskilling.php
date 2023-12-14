@@ -1,6 +1,7 @@
 <title><?php echo $row_data['nama']; ?> | Data Upskill</title>
 <?php
 $row_upskill = mysqli_fetch_array($data_upskill);
+
 ?>
 
 <!-- INI UNTUK JUDUL -->
@@ -14,6 +15,7 @@ $row_upskill = mysqli_fetch_array($data_upskill);
     </ol>
 </section>
 <section class="content">
+    <a href="javascript:history.back()" class="btn btn-md btn-success" data-toggle="tooltip" data-placement="top" title="Kembali"><i class="fa fa-chevron-left fa-fw"></i>Back</a>
 
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-danger">
         <li class="fa fa-plus"></li> Tambah Data
@@ -30,7 +32,8 @@ $row_upskill = mysqli_fetch_array($data_upskill);
                     <i class="fa fa-exclamation-triangle"></i> Pelanggaran
                     <div class="pull-right">
                         <label class="label" style="font-size: 15px;"> Pegawai : <?php echo $row_upskill['nip']; ?>
-                        </label>
+                   
+                            </label>
                     </div>
                 </div>
 
@@ -44,16 +47,16 @@ $row_upskill = mysqli_fetch_array($data_upskill);
                                     <center>No</center>
                                 </th>
                                 <th width="18%">
-                                    <center>jenis Pelanggaran</center>
+                                    <center>Nama Keterampilan</center>
                                 </th>
                                 <th width="30%">
-                                    <center>keterangan</center>
+                                    <center>Tanggal Mulai</center>
                                 </th>
                                 <th width="15%">
                                     <center>Status</center>
                                 </th>
                                 <th width="10%">
-                                    <center>Masa Berlaku</center>
+                                    <center>Penyedia</center>
                                 </th>
 
                                 <th width="10%">
@@ -67,14 +70,15 @@ $row_upskill = mysqli_fetch_array($data_upskill);
                             $nomor = 1;
 
                             if (isset($data_upskill)) {
+                                mysqli_data_seek($data_upskill, 0); // Set pointer ke baris pertama
                                 while ($row_upskill = mysqli_fetch_array($data_upskill)) {
                             ?>
                                     <tr class="odd gradeX">
                                         <td><?php echo $nomor; ?></td>
-                                        <td><?php echo $row_upskill['jenis_pelanggaran']; ?></td>
-                                        <td><?php echo $row_upskill['keterangan']; ?></td>
+                                        <td><?php echo $row_upskill['nama_keterampilan']; ?></td>
+                                        <td><?php echo $row_upskill['tanggal_mulai']; ?></td>
                                         <td><?php echo $row_upskill['status']; ?></td>
-                                        <td><?php echo $row_upskill['masa_berlaku']; ?></td>
+                                        <td><?php echo $row_upskill['penyedia']; ?></td>
 
                                         <td>
                                             <center>
@@ -88,85 +92,86 @@ $row_upskill = mysqli_fetch_array($data_upskill);
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span></button>
                                                                 <center>
-                                                                    <h4 class="modal-title">Edit Data Pelanggaran</h4>
+                                                                    <h4 class="modal-title">Edit Data Keterampilan</h4>
                                                                 </center>
-                                                            </div>
-                                                            <form role="form" method="POST" action="index.php?controller=warning&method=update_warning" enctype="multipart/form-data">
-                                                                <table width="100%" class="modal-body">
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="modal-body">
-                                                                                <div class="form-group">
-                                                                                    <label>Jenis Pelanggaran</label>
-                                                                                    <input type="hidden" name="nip" value="<?php echo $row_detail['nip']; ?>"></input>
-                                                                                    <input type="hidden" name="id" value="<?php echo $row_pelanggaran['id']; ?>"></input>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="modal-body">
-                                                                                <select name="jenis_pelanggaran" id="jenis_pelanggaran" class="form-control" required oninvalid="this.setCustomValidity('Pilih Jenis Pelanggaran')" oninput="setCustomValidity('')" autocomplete="off">
-                                                                                    <option value="" disabled selected>Pilih Jenis Pelanggaran</option>
-                                                                                    <option value="SP1">SP1</option>
-                                                                                    <option value="SP2">SP2</option>
-                                                                                    <option value="SP3">SP3</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="modal-body">
-                                                                                <div class="form-group">
-                                                                                    <label>Keterangan</label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="modal-body">
-                                                                                <input type="text" name="keterangan" value="<?php echo $row_pelanggaran['keterangan']; ?>" class="form-control" placeholder="Keterangan" required>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="modal-body">
-                                                                                <div class="form-group">
-                                                                                    <label>Status</label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="modal-body">
-                                                                                <input type="text" name="status" value="<?php echo $row_pelanggaran['status']; ?>" class="form-control" placeholder="Status" required>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="modal-body">
-                                                                                <div class="form-group">
-                                                                                    <label>Masa Berlaku</label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="modal-body">
-                                                                                <input type="text" name="masa_berlaku" value="<?php echo $row_pelanggaran['masa_berlaku']; ?>" class="form-control" placeholder="Masa Berlaku" required>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <input type="hidden" name="id" value="<?php echo $row_pelanggaran['id']; ?>" class="form-control" required>
-                                                                </table>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                                                                    <button type="submit" class="btn btn-outline btn-xl" data-toggle="tooltip" data-placement="top" title="Simpan">Simpan</button>
 
-                                                                </div>
-                                                            </form>
+                                                                <form role="form" method="POST" action="index.php?controller=upskilling&method=update_upskilling" enctype="multipart/form-data">
+                                                                    <table width="100%" class="modal-body">
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div class="modal-body">
+                                                                                    <div class="form-group">
+                                                                                        <label>Nama Keterampilan</label>
+                                                                                        <input type="hidden" name="nip" value="<?php echo $row_detail['nip']; ?>">
+                                                                                        <input type="hidden" name="id" value="<?php echo $row_pelanggaran['id']; ?>">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="modal-body">
+                                                                                    <select name="nama_keterampilan" id="nama_keterampilan" class="form-control" required oninvalid="this.setCustomValidity('Pilih Nama Keterampilan')" oninput="setCustomValidity('')" autocomplete="off">
+                                                                                        <option value="" disabled selected>Pilih Nama Keterampilan</option>
+                                                                                        <option value="Animasi 2D">Animasi 2D</option>
+                                                                                        <option value="Teknik 3D Modeling">Teknik 3D Modeling</option>
+                                                                                        <option value="Teknik Sound Design">Teknik Sound Design</option>
+                                                                                        <!-- Add more options as needed -->
+                                                                                    </select>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div class="modal-body">
+                                                                                    <div class="form-group">
+                                                                                        <label>Tanggal Mulai</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="modal-body">
+                                                                                    <input type="text" name="tanggal_mulai" value="<?php echo $row_upskill['tanggal_mulai']; ?>" class="form-control" placeholder="Tanggal Mulai" required>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div class="modal-body">
+                                                                                    <div class="form-group">
+                                                                                        <label>Status</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="modal-body">
+                                                                                    <input type="text" name="status" value="<?php echo $row_upskill['status']; ?>" class="form-control" placeholder="Status" required>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div class="modal-body">
+                                                                                    <div class="form-group">
+                                                                                        <label>Penyedia</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="modal-body">
+                                                                                    <input type="text" name="penyedia" value="<?php echo $row_upskill['penyedia']; ?>" class="form-control" placeholder="Penyedia" required>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <input type="hidden" name="id" value="<?php echo $row_upskill['id']; ?>" class="form-control" required>
+                                                                    </table>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                                                                        <button type="submit" class="btn btn-outline btn-xl" data-toggle="tooltip" data-placement="top" title="Simpan">Simpan</button>
+                                                                    </div>
+                                                                </form>
+
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
                                             </center>
                                         </td>
                                     </tr>
@@ -183,7 +188,7 @@ $row_upskill = mysqli_fetch_array($data_upskill);
     </div>
 </section>
 
-<!-- Formulir Tambah Data -->
+<!-- Formulir Tambah Data Keterampilan -->
 <div class="modal modal-primary fade" id="modal-danger">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -192,18 +197,17 @@ $row_upskill = mysqli_fetch_array($data_upskill);
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <center>
-                    <h4 class="modal-title">Tambah Data Pelanggaran</h4>
+                    <h4 class="modal-title">Tambah Data Keterampilan</h4>
                 </center>
             </div>
-            <form role="form" method="POST" action="index.php?controller=warning&method=insert_warning" enctype="multipart/form-data">
+            <form role="form" method="POST" action="index.php?controller=upskilling&method=insert_upskilling" enctype="multipart/form-data">
                 <table width="100%" class="modal-body">
                     <tr>
                         <td>
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>NIP</label>
-                                    <!-- Input untuk NIP, pengguna bisa mengisinya -->
-                                    <input type="text" name="nip" id="nip" class="form-control" placeholder="NIP" required oninvalid="this.setCustomValidity('Masukkan NIP')" oninput="setCustomValidity('')" autocomplete="off">
+                                    <input type="hidden" name="nip" id="nip" class="form-control" placeholder="NIP" required oninvalid="this.setCustomValidity('Masukkan NIP')" oninput="setCustomValidity('')" autocomplete="off">
                                 </div>
                             </div>
                         </td>
@@ -212,14 +216,9 @@ $row_upskill = mysqli_fetch_array($data_upskill);
                         <td>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Jenis Pelanggaran</label>
-
+                                    <label>Nama Keterampilan</label>
+                                    <input type="text" name="nama_keterampilan" id="nama_keterampilan" class="form-control" placeholder="Nama Keterampilan" required oninvalid="this.setCustomValidity('Masukkan Nama Keterampilan')" oninput="setCustomValidity('')" autocomplete="off">
                                 </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="modal-body">
-                                <input type="text" name="jenis_pelanggaran" id="jenis_pelanggaran" class="form-control" placeholder="Jenis Pelanggaran" required oninvalid="this.setCustomValidity('Masukkan Jenis Pelanggaran')" oninput="setCustomValidity('')" autocomplete="off">
                             </div>
                         </td>
                     </tr>
@@ -227,13 +226,9 @@ $row_upskill = mysqli_fetch_array($data_upskill);
                         <td>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Keterangan</label>
+                                    <label>Tanggal Mulai</label>
+                                    <input type="text" name="tanggal_mulai" id="tanggal_mulai" class="form-control" placeholder="Tanggal Mulai" required oninvalid="this.setCustomValidity('Masukkan Tanggal Mulai')" oninput="setCustomValidity('')" autocomplete="off">
                                 </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="modal-body">
-                                <input type="text" name="keterangan" id="keterangan" class="form-control" placeholder="Keterangan" required oninvalid="this.setCustomValidity('Masukkan Keterangan')" oninput="setCustomValidity('')" autocomplete="off">
                             </div>
                         </td>
                     </tr>
@@ -242,12 +237,8 @@ $row_upskill = mysqli_fetch_array($data_upskill);
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Status</label>
+                                    <input type="text" name="status" id="status" class="form-control" placeholder="Status" required oninvalid="this.setCustomValidity('Masukkan Status')" oninput="setCustomValidity('')" autocomplete="off">
                                 </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="modal-body">
-                                <input type="text" name="status" id="status" class="form-control" placeholder="Status" required oninvalid="this.setCustomValidity('Masukkan Status')" oninput="setCustomValidity('')" autocomplete="off">
                             </div>
                         </td>
                     </tr>
@@ -255,17 +246,13 @@ $row_upskill = mysqli_fetch_array($data_upskill);
                         <td>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Masa Berlaku</label>
+                                    <label>Penyedia</label>
+                                    <input type="text" name="penyedia" id="penyedia" class="form-control" placeholder="Penyedia" required oninvalid="this.setCustomValidity('Masukkan Penyedia')" oninput="setCustomValidity('')" autocomplete="off">
                                 </div>
                             </div>
                         </td>
-                        <td>
-                            <div class="modal-body">
-                                <input type="text" name="masa_berlaku" id="masa_berlaku" class="form-control" placeholder="Masa Berlaku" required oninvalid="this.setCustomValidity('Masukkan Masa Berlaku')" oninput="setCustomValidity('')" autocomplete="off">
-                            </div>
-                        </td>
                     </tr>
-                    <!-- ... (form tambah data lainnya) ... -->
+                    <!-- ... (Tambah data lainnya) ... -->
                 </table>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
@@ -275,6 +262,7 @@ $row_upskill = mysqli_fetch_array($data_upskill);
         </div>
     </div>
 </div>
+
 
 <?php
 
