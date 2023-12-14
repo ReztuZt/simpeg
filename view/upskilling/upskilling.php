@@ -32,8 +32,8 @@ $row_upskill = mysqli_fetch_array($data_upskill);
                     <i class="fa fa-exclamation-triangle"></i> Pelanggaran
                     <div class="pull-right">
                         <label class="label" style="font-size: 15px;"> Pegawai : <?php echo $row_upskill['nip']; ?>
-                   
-                            </label>
+
+                        </label>
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@ $row_upskill = mysqli_fetch_array($data_upskill);
                                             <center>
                                                 <a type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#pelanggaran<?php echo $nomor; ?>" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fa fa-edit fa-fw"></i></a>
 
-                                                <a href="index.php?controller=warning&method=delete_warning&id=<?php echo $row_pelanggaran['id']; ?>" class="btn btn-danger btn-xs" role="button" data-toggle="tooltip" data-placement="top" title="Delete" onClick="return confirm('Yakin hapus data <?php echo $row_pelanggaran['keterangan']; ?>?')"> <i class="fa fa-trash fa-fw"></i> </a>
+                                                <a href="index.php?controller=upskilling&method=delete_upskilling&id=<?php echo $row_upskill['id']; ?>" class="btn btn-danger btn-xs" role="button" data-toggle="tooltip" data-placement="top" title="Delete" onClick="return confirm('Yakin hapus data <?php echo $row_upskill['nip']; ?>?')"> <i class="fa fa-trash fa-fw"></i> </a>
                                                 <div class="modal modal-success fade" id="pelanggaran<?php echo $nomor; ?>">
                                                     <div class="modal-dialog modal-md">
                                                         <div class="modal-content">
@@ -201,66 +201,51 @@ $row_upskill = mysqli_fetch_array($data_upskill);
                 </center>
             </div>
             <form role="form" method="POST" action="index.php?controller=upskilling&method=insert_upskilling" enctype="multipart/form-data">
-                <table width="100%" class="modal-body">
-                    <tr>
-                        <td>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label>NIP</label>
-                                    <input type="hidden" name="nip" id="nip" class="form-control" placeholder="NIP" required oninvalid="this.setCustomValidity('Masukkan NIP')" oninput="setCustomValidity('')" autocomplete="off">
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label>Nama Keterampilan</label>
-                                    <input type="text" name="nama_keterampilan" id="nama_keterampilan" class="form-control" placeholder="Nama Keterampilan" required oninvalid="this.setCustomValidity('Masukkan Nama Keterampilan')" oninput="setCustomValidity('')" autocomplete="off">
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label>Tanggal Mulai</label>
-                                    <input type="text" name="tanggal_mulai" id="tanggal_mulai" class="form-control" placeholder="Tanggal Mulai" required oninvalid="this.setCustomValidity('Masukkan Tanggal Mulai')" oninput="setCustomValidity('')" autocomplete="off">
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label>Status</label>
-                                    <input type="text" name="status" id="status" class="form-control" placeholder="Status" required oninvalid="this.setCustomValidity('Masukkan Status')" oninput="setCustomValidity('')" autocomplete="off">
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label>Penyedia</label>
-                                    <input type="text" name="penyedia" id="penyedia" class="form-control" placeholder="Penyedia" required oninvalid="this.setCustomValidity('Masukkan Penyedia')" oninput="setCustomValidity('')" autocomplete="off">
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <!-- ... (Tambah data lainnya) ... -->
-                </table>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                    <input id="button" type="submit" name="submit" class="btn btn-outline btn-xl" value="Simpan" data-toggle="tooltip" data-placement="top" title="Simpan">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>NIP</label>
+                        <input type="text" name="nip" id="nip" class="form-control" placeholder="NIP" required oninvalid="this.setCustomValidity('Masukkan NIP')" oninput="setCustomValidity('')" autocomplete="off">
+                    </div>
                 </div>
-            </form>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Nama Keterampilan</label>
+                        <select name="nama_keterampilan" id="nama_keterampilan" class="form-control" required oninvalid="this.setCustomValidity('Pilih Nama Keterampilan')" oninput="setCustomValidity('')" autocomplete="off">
+                            <option value="" disabled selected>Pilih Nama Keterampilan</option>
+                            <option value="Animasi 2D">Animasi 2D</option>
+                            <option value="Teknik 3D Modeling">Teknik 3D Modeling</option>
+                            <option value="Teknik Sound Design">Teknik Sound Design</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Tanggal Mulai</label>
+                        <input type="date" name="tanggal_mulai" id="tanggal_mulai" class="form-control" placeholder="Tanggal Mulai" required oninvalid="this.setCustomValidity('Masukkan Tanggal Mulai')" oninput="setCustomValidity('')" autocomplete="off">
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Status</label>
+                        <input type="text" name="status" id="status" class="form-control" placeholder="Status" required oninvalid="this.setCustomValidity('Masukkan Status')" oninput="setCustomValidity('')" autocomplete="off">
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Penyedia</label>
+                        <input type="text" name="penyedia" id="penyedia" class="form-control" placeholder="Penyedia" required oninvalid="this.setCustomValidity('Masukkan Penyedia')" oninput="setCustomValidity('')" autocomplete="off">
+                    </div>
+                </div>
+        <!-- ... (Tambah data lainnya) ... -->
+        </table>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+            <input id="button" type="submit" name="submit" class="btn btn-outline btn-xl" value="Simpan" data-toggle="tooltip" data-placement="top" title="Simpan">
         </div>
+        </form>
     </div>
+</div>
 </div>
 
 

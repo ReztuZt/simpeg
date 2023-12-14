@@ -64,34 +64,57 @@ class upskilling
         $data_insert = $this->upskill->dataUbahUpskilling($id, $nip, $nama_keterampilan, $tanggal_mulai, $status, $penyedia);
 
         if ($data_insert == TRUE) {
-            echo "<script>window.location = 'index.php?controller=upskilling&method=upskilling&nip=$nip';</script>";
+            echo "<script>window.history.go(-1); location.reload();</script>";
         } else {
-            echo "<script>alert('Proses Update Gagal!');window.location = 'index.php?controller=upskilling&method=upskilling&nip=$nip';</script>";
+            echo "<script>alert('Proses Insert Gagal!'); window.history.go(-1); location.reload();</script>";
         }
     }
 
-    
-		// FUNCTION UNTUK MENANGANI PROSES INSERT KE TABEL
-		 function insert_upskilling() {
-            // Ambil NIP dari sesi atau tempat lain sesuai kebutuhan
-            $nip = $_POST['nip']; // Sesuaikan dengan cara Anda menyimpan NIP
-    
-            // Ambil data dari formulir
-            $nama_keterampilan = $_POST['nama_keterampilan'];
-            $tanggal_mulai = $_POST['tanggal_mulai'];
-            $status = $_POST['status'];
-            $penyedia = $_POST['penyedia'];
-    
-            // Panggil fungsi atau query untuk menyimpan data ke dalam tabel pelanggaran
-            $data_insert = $this->upskill->tambahDataUpskilling($nip, $nama_keterampilan, $tanggal_mulai, $status, $penyedia);
-    
-            // Lakukan pengalihan atau tampilkan pesan sesuai dengan hasil operasi penyimpanan
-            if ($data_insert) {
-                echo "<script>window.history.go(-1); location.reload();</script>";
-            } else {
-                echo "<script>alert('Proses Insert Gagal!'); window.history.go(-1); location.reload();</script>";
-            }
-            
+
+    // FUNCTION UNTUK MENANGANI PROSES INSERT KE TABEL
+    function insert_upskilling()
+    {
+        // Ambil NIP dari sesi atau tempat lain sesuai kebutuhan
+        $nip = $_POST['nip']; // Sesuaikan dengan cara Anda menyimpan NIP
+
+        // Ambil data dari formulir
+        $nama_keterampilan = $_POST['nama_keterampilan'];
+        $tanggal_mulai = $_POST['tanggal_mulai'];
+        $status = $_POST['status'];
+        $penyedia = $_POST['penyedia'];
+
+        // Panggil fungsi atau query untuk menyimpan data ke dalam tabel pelanggaran
+        $data_insert = $this->upskill->tambahDataUpskilling($nip, $nama_keterampilan, $tanggal_mulai, $status, $penyedia);
+
+        // Lakukan pengalihan atau tampilkan pesan sesuai dengan hasil operasi penyimpanan
+        if ($data_insert) {
+            echo "<script>window.history.go(-1); location.reload();</script>";
+        } else {
+            echo "<script>alert('Proses Insert Gagal!'); window.history.go(-1); location.reload();</script>";
         }
+    }
+
+    function delete_upskilling()
+    {
+        // DARI CONTROLLER
+        // MENANGKAP NILAI NIK
+        $id            = $_GET['id'];
+        $nip        = $_GET['nip'];
+
+        $data = $this->upskill->dataDeleteUpskilling($id);
+
+        /// DARI VIEW
+        // MENGARAHKAN KE FILE VIEW/SELECT.PHP
+        // JIKA HASIL PROSES DELETE BERHASIL
+        if ($data         == TRUE) {
+            echo "<script>window.history.go(-1); location.reload();</script>";
+        }
+        // MENGARAHKAN KE FILE VIEW/SELECT.PHP
+        // JIKA HASIL PROSES DELETE GAGAL
+        else {
+            echo "<script>alert('Proses Insert Gagal!'); window.history.go(-1); location.reload();</script>";
+        }
+    }
+
 
 }

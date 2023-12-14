@@ -14,7 +14,7 @@ $row_pelanggaran = mysqli_fetch_array($data_pelanggaran);
     </ol>
 </section>
 <section class="content">
-
+    <a href="javascript:history.back()" class="btn btn-md btn-success" data-toggle="tooltip" data-placement="top" title="Kembali"><i class="fa fa-chevron-left fa-fw"></i>Back</a>
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-danger">
         <li class="fa fa-plus"></li> Tambah Data
     </button>

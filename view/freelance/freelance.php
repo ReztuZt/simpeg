@@ -38,20 +38,20 @@ if ($_SESSION['level_simpeg'] == "admin") {
                                     <th width="1%">
                                         <center>No</center>
                                     </th>
-                                    <th width="30%">
+                                    <th width="15%">
                                         <center>nama</center>
                                     </th>
-                                    <th width="30%">
+                                    <th width="15%">
                                         <center>Email</center>
                                     </th>
-                                    <th width="20%">
+                                    <th width="15%">
                                         <center>Nomor Telepon</center>
                                     </th>
-                                    <th width="40%">
+                                    <th width="15%">
                                         <center>Keterangan</center>
                                     </th>
-                                    <th width="10%">
-                                        <center>code</center>
+                                    <th width="25%">
+                                        <center>No Rekening</center>
                                     </th>
                                     <th width="25%">
                                         <center>Aksi</center>
@@ -78,7 +78,7 @@ if ($_SESSION['level_simpeg'] == "admin") {
                                             <td><?php echo $row_freelance['code']; ?></td>
                                             <td>
                                                 <center>
-                                                    <a type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#freelance<?php echo $nomor; ?>" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fa fa-edit fa-fw"></i></a>
+                                                    <!-- <a type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#freelance<?php echo $nomor; ?>" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fa fa-edit fa-fw"></i></a> -->
                                                     <a href="index.php?controller=freelance&method=detail&code=<?php echo $row_freelance['code']; ?>" class="btn btn-primary btn-xs" role="button" data-toggle="tooltip" data-placement="top" title="Detail"> <i class="fa fa-info fa-fw"></i> </a>
                                                     <a href="index.php?controller=freelance&method=delete_freelance&id=<?php echo $row_freelance['id']; ?>" class="btn btn-danger btn-xs" role="button" data-toggle="tooltip" data-placement="top" title="Delete" onClick="return confirm('Yakin hapus data <?php echo $row_freelance['keterangan']; ?>?')"> <i class="fa fa-trash fa-fw"></i> </a>
                                                     <div class="modal modal-success fade" id="freelance<?php echo $nomor; ?>">
@@ -179,7 +179,7 @@ if ($_SESSION['level_simpeg'] == "admin") {
                                                     </div>
                                                     <!-- /.modal -->
 
-                  
+
                                                 </center>
 
                                             </td>

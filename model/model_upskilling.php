@@ -56,13 +56,13 @@ class model_upskilling extends database
     }
 
 
-    
-	// QUERY UNTUK MEMASUKKAN DATA (INSERT)
-	function dataUbahUpskilling($id, $nip, $nama_keterampilan, $tanggal_mulai, $status, $penyedia)
-	{
-		$koneksi = $this->koneksi;
 
-		$query = "UPDATE upskill SET
+    // QUERY UNTUK MEMASUKKAN DATA (INSERT)
+    function dataUbahUpskilling($id, $nip, $nama_keterampilan, $tanggal_mulai, $status, $penyedia)
+    {
+        $koneksi = $this->koneksi;
+
+        $query = "UPDATE upskill SET
 						
 								nama_keterampilan = '$nama_keterampilan',
 								tanggal_mulai = '$tanggal_mulai',
@@ -70,21 +70,43 @@ class model_upskilling extends database
 								penyedia = '$penyedia'
 							 WHERE id = '$id'";
 
-		$sql = mysqli_query($koneksi, $query);
+        $sql = mysqli_query($koneksi, $query);
 
-		return $sql;
-	}
-    
+        return $sql;
+    }
 
-	//tambah data untuk upskilling
-	function tambahDataUpskilling($nip, $nama_keterampilan, $tanggal_mulai, $status, $penyedia)
-	{
-		$query = "INSERT INTO upskill (nip, nama_keterampilan, tanggal_mulai, status, penyedia) 
+
+    //tambah data untuk upskilling
+    function tambahDataUpskilling($nip, $nama_keterampilan, $tanggal_mulai, $status, $penyedia)
+    {
+        $query = "INSERT INTO upskill (nip, nama_keterampilan, tanggal_mulai, status, penyedia) 
 						  VALUES ('$nip', '$nama_keterampilan', '$tanggal_mulai', '$status', '$penyedia')";
 
-		$sql = mysqli_query($this->koneksi, $query);
+        $sql = mysqli_query($this->koneksi, $query);
 
-		return $sql;
-	}
+        return $sql;
+    }
+
+    // QUERY UNTUK MENGHAPUS DATA (DELETE)
+    function dataDeleteUpskilling($id)
+    {
+        $koneksi = $this->koneksi;
+        // SQL
+        $query        = "DELETE FROM upskill
+							   WHERE id = '$id'";
+
+        $sql        = mysqli_query($koneksi, $query);
+
+        // CEK SQL
+        if ($sql == TRUE) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+
+
+    // QUERY UNTUK MENGHAPUS DATA (DELETE
 
 }
