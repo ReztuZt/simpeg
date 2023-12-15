@@ -39,21 +39,21 @@ if ($_SESSION['level_simpeg'] == "admin") {
                                         <center>No</center>
                                     </th>
                                     <th width="15%">
-                                        <center>nama</center>
+                                        <center>Nama</center>
                                     </th>
                                     <th width="15%">
                                         <center>Email</center>
                                     </th>
-                                    <th width="15%">
+                                    <th width="30">
                                         <center>Nomor Telepon</center>
                                     </th>
-                                    <th width="15%">
+                                    <th width="30%">
                                         <center>Keterangan</center>
                                     </th>
                                     <th width="25%">
                                         <center>No Rekening</center>
                                     </th>
-                                    <th width="25%">
+                                    <th width="15%">
                                         <center>Aksi</center>
                                     </th>
                                 </tr>
@@ -88,7 +88,7 @@ if ($_SESSION['level_simpeg'] == "admin") {
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span></button>
                                                                     <center>
-                                                                        <h4 class="modal-title">Edit Data Freelance</h4>
+                                                                        <h4 class="modal-title">Edit Data Freelancer</h4>
                                                                     </center>
                                                                 </div>
                                                                 <form role="form" method="POST" action="index.php?controller=freelance&method=update_freelance" enctype="multipart/form-data">

@@ -110,30 +110,27 @@ function tambahData() {
 				$no_telp	= $_POST['no_telp'];
 				$keterangan 	= $_POST['keterangan'];
 				$code 	= $_POST['code'];
-				$alamat 	= $_POST['alamat'];
+				
 				
 
 				
 				// DARI MODEL
 				// MENGARAH KE METHOD DI CLASS MODEL PENDUDUK
-				$data			= $this->freelance->dataUpdate_freelance($id,$nama,$email,$no_telp,$keterangan,$code,$alamat);
+				$data			= $this->freelance->dataUpdate_freelance($id,$nama,$email,$no_telp,$keterangan,$code);
 				
 				// DARI VIEW
 				// MENGARAHKAN KE FILE VIEW/SELECT.PHP
 				// JIKA HASIL PROSES UPDATE BERHASIL
 				if($data 		== TRUE) {
-					echo "<script> 
-						  window.location = 'index.php?controller=freelance&method=freelance'; 
-						  </script>";
+					echo "<script>window.history.go(-1); location.reload();</script>";
 				
 				} 
 				// MENGARAHKAN KE FILE VIEW/UPDATE.PHP
 				// JIKA HASIL PROSES UPDATE GAGAL
 				else {
-					echo "<script> 
-						  alert('Proses Update Gagal!');
-						  window.location = 'index.php?controller=freelance&method=freelance'; 
-						  </script>";
+					echo "<script>alert('Proses Insert Gagal!'); window.history.go(-1); location.reload();</script>";
+				}
+				
 				}
 			}
 
@@ -172,6 +169,6 @@ function tambahData() {
 						  </script>";
 				}
 			}
-		}
+		
 	
 ?>

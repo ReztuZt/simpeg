@@ -116,7 +116,7 @@
 				}
 			}
 		// QUERY UNTUK MENGUBAH DATA (UPDATE)
-			function dataUpdate_freelance($id, $nama, $email, $no_telp, $keterangan, $code, $alamat) {
+			function dataUpdate_freelance($id, $nama, $email, $no_telp, $keterangan, $code) {
 				$koneksi = $this->koneksi;
 		
 				// SQL
@@ -125,8 +125,7 @@
 							email       = '$email',
 							no_telp  = '$no_telp',
 							keterangan  = '$keterangan',
-							code		='$code',
-							alamat		='$alamat'
+							code		='$code'
 						  WHERE id       = '$id'";
 				
 				$sql		= mysqli_query($koneksi,$query);
