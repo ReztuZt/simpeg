@@ -1047,7 +1047,7 @@ $row_pegawai  = mysqli_fetch_array($data_pegawai);
         <td width="3%"></td>
         <td>
             <div class="form-group">
-                Masa Kerja Golongan
+              No Rekening
             </div>
         </td>
         <td>
@@ -1057,7 +1057,7 @@ $row_pegawai  = mysqli_fetch_array($data_pegawai);
         </td>
         <td style="padding-right: 20px;">
             <div class="form-group">
-                <input name="masa_golongan" value="<?php echo $row_pegawai['masa_kerja_golongan']; ?>" class="form-control" required="" autocomplete="off"></input>
+                <input name="no_rek" value="<?php echo $row_pegawai['no_rek']; ?>" class="form-control" required="" autocomplete="off"></input>
             </div>
         </td>
     </tr>
@@ -1094,7 +1094,10 @@ $row_pegawai  = mysqli_fetch_array($data_pegawai);
                 <input name="masa_keseluruhan" value="<?php echo $row_pegawai['masa_kerja_keseluruhan']; ?>" class="form-control" required="" autocomplete="off"></input>
             </div>
         </td>
+        
     </tr>
+    <tr>
+        
     </table>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>

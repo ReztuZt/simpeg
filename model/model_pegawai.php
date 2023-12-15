@@ -130,7 +130,7 @@
 			}
 		
 		// QUERY UNTUK MENGUBAH DATA (UPDATE)
-			function dataUpdate($nip,$nama,$tempat_lahir,$tgl_lahir,$gender,$agama,$kebangsaan,$jumlah_keluarga,$alamat,$sk_terakhir,$pangkat,$tmt_golongan,$jenis,$tmt_capeg,$status,$jabatan,$digaji,$gaji_pokok,$penghasilan,$masa_golongan,$masa_keseluruhan,$npwp,$rt,$rw,$desa,$kecamatan,$kabupaten,$wa) {
+			function dataUpdate($nip,$nama,$tempat_lahir,$tgl_lahir,$gender,$agama,$kebangsaan,$jumlah_keluarga,$alamat,$sk_terakhir,$pangkat,$tmt_golongan,$jenis,$tmt_capeg,$status,$jabatan,$digaji,$gaji_pokok,$penghasilan,$no_rek,$masa_keseluruhan,$npwp,$rt,$rw,$desa,$kecamatan,$kabupaten,$wa) {
 				$koneksi = $this->koneksi;
 				// SQL
 				$query		= "UPDATE pegawai SET
@@ -152,7 +152,7 @@
 								digaji_menurut				= '$digaji',
 								gaji_pokok					= '$gaji_pokok',
 								besarnya_penghasilan 		= '$penghasilan',
-								masa_kerja_golongan		= '$masa_golongan',
+								no_rek		= '$no_rek',
 								masa_kerja_keseluruhan 	= '$masa_keseluruhan',
 								npwp 						= '$npwp',
 								rt 							= '$rt',

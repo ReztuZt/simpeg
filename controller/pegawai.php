@@ -304,7 +304,7 @@ class pegawai
 		$penghasilan 	= str_replace(".", "", $penghasilan1);
 
 
-		$masa_golongan 	= $_POST['masa_golongan'];
+		$no_rek 	= $_POST['no_rek'];
 		$masa_keseluruhan = $_POST['masa_keseluruhan'];
 		$npwp 			= $_POST['npwp'];
 		$rt 			= $_POST['rt'];
@@ -317,7 +317,7 @@ class pegawai
 
 		// DARI MODEL
 		// MENGARAH KE METHOD DI CLASS MODEL PENDUDUK
-		$data			= $this->pegawai->dataUpdate($nip, $nama, $tempat_lahir, $tgl_lahir, $gender, $agama, $kebangsaan, $jumlah_keluarga, $alamat, $sk_terakhir, $pangkat, $tmt_golongan, $jenis, $tmt_capeg, $status, $jabatan, $digaji, $gaji_pokok, $penghasilan, $masa_golongan, $masa_keseluruhan, $npwp, $rt, $rw, $desa, $kecamatan, $kabupaten, $wa);
+		$data			= $this->pegawai->dataUpdate($nip, $nama, $tempat_lahir, $tgl_lahir, $gender, $agama, $kebangsaan, $jumlah_keluarga, $alamat, $sk_terakhir, $pangkat, $tmt_golongan, $jenis, $tmt_capeg, $status, $jabatan, $digaji, $gaji_pokok, $penghasilan, $no_rek, $masa_keseluruhan, $npwp, $rt, $rw, $desa, $kecamatan, $kabupaten, $wa);
 
 		// DARI VIEW
 		// MENGARAHKAN KE FILE VIEW/SELECT.PHP

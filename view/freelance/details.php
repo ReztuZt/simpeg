@@ -12,7 +12,7 @@ $photoPath = $row_freelance['foto_path']; // Change 'foto_path' to the appropria
 <!-- Header Section -->
 <section class="content-header">
     <h1>
-        Data Detail Freelance
+        Foto Freelance
     </h1>
     <ol class="breadcrumb">
         <li><a href="index.php?controller=sistem&method=home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -40,7 +40,7 @@ $photoPath = $row_freelance['foto_path']; // Change 'foto_path' to the appropria
             <div class="panel panel-default">
                 <!-- Panel Heading with Freelance Name -->
                 <div class="panel-heading bg-aqua">
-                    <i class="fa fa-user fa-fw"></i> Data Diri
+                    <i class="fa fa-user fa-fw"></i> Data Studio
                     <div class="pull-right">
                         <span class="label label-info" style="font-size: 15px;"> Pegawai: <?php echo $row_freelance['nama']; ?></span>
                     </div>
@@ -71,6 +71,8 @@ $photoPath = $row_freelance['foto_path']; // Change 'foto_path' to the appropria
                             <label class="control-label">Keterangan</label>
                             <p class="form-control-static"><?php echo $row_freelance['keterangan']; ?></p>
                         </div>
+
+                        <!-- Button Edit -->
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal">Edit</button>
                     </div> <!-- End of Bootstrap Grid System -->
                 </div> <!-- End of Panel Body -->
@@ -78,6 +80,12 @@ $photoPath = $row_freelance['foto_path']; // Change 'foto_path' to the appropria
         </div> <!-- End of Main Content Section -->
     </div>
 </div>
+
+<!-- Upload Modal -->
+<!-- ... -->
+
+<!-- Delete Modal -->
+<!-- ... -->
 
 <!-- Edit Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
@@ -92,75 +100,86 @@ $photoPath = $row_freelance['foto_path']; // Change 'foto_path' to the appropria
             <div class="modal-body">
                 <!-- Form Edit -->
                 <form role="form" method="POST" action="index.php?controller=freelance&method=update_freelance" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label>Nama</label>
-                        <input type="text" name="nama" value="<?php echo $row_freelance['nama']; ?>" class="form-control" placeholder="Nama" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" name="email" value="<?php echo $row_freelance['email']; ?>" class="form-control" placeholder="Email" required>
-                    </div>
-                    <div class="form-group">
-                        <label>No Telepon</label>
-                        <input type="tel" name="no_telp" value="<?php echo $row_freelance['no_telp']; ?>" class="form-control" placeholder="Nomor Telepon" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Keterangan</label>
-                        <input type="text" name="keterangan" value="<?php echo $row_freelance['keterangan']; ?>" class="form-control" placeholder="Keterangan" required oninvalid="this.setCustomValidity('Masukan Keterangan')" oninput="setCustomValidity('')" autocomplete="off">
-                        <input type="hidden" name="id" value="<?php echo $row_freelance['id']; ?>" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Code</label>
-                        <input type="tel" name="code" value="<?php echo $row_freelance['code']; ?>" class="form-control" placeholder="Code" required>
-                    </div>
+                    <table width="100%" class="modal-body">
+                        <tr>
+                            <td>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>Nama</label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="modal-body">
+                                    <input type="text" name="nama" value="<?php echo $row_freelance['nama']; ?>" class="form-control" placeholder="Nama" required>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="modal-body">
+                                    <input type="email" name="email" value="<?php echo $row_freelance['email']; ?>" class="form-control" placeholder="Email" required>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>No Telepon</label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="modal-body">
+                                    <input type="tel" name="no_telp" value="<?php echo $row_freelance['no_telp']; ?>" class="form-control" placeholder="Nomor Telepon" required>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>Keterangan</label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="modal-body">
+                                    <input type="text" name="keterangan" value="<?php echo $row_freelance['keterangan']; ?>" class="form-control" placeholder="Keterangan" required oninvalid="this.setCustomValidity('Masukan Keterangan')" oninput="setCustomValidity('')" autocomplete="off">
+                                    <input type="hidden" name="id" value="<?php echo $row_freelance['id']; ?>" class="form-control" required>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>code</label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="modal-body">
+                                    <input type="tel" name="code" value="<?php echo $row_freelance['code']; ?>" class="form-control" placeholder="code" required>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
                         <input type="submit" name="submit" class="btn btn-outline btn-xl" value="Simpan" data-toggle="tooltip" data-placement="top" title="Simpan">
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Upload Modal -->
-<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="uploadModalLabel">Unggah Foto</h4>
-            </div>
-            <div class="modal-body">
-                <form action="upload_photo.php" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="employee_code" value="<?php echo $row_freelance['code']; ?>">
-                    <input type="file" name="photo" required>
-                    <br><br>
-                    <button type="submit" class="btn btn-primary">Unggah</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Delete Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="deleteModalLabel">Hapus Foto</h4>
-            </div>
-            <div class="modal-body">
-                <p>Apakah Anda yakin ingin menghapus foto ini?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                <a href="delete_photo.php?employee_code=<?php echo $row_freelance['code']; ?>" class="btn btn-danger">Hapus</a>
+                <!-- End Form Edit -->
             </div>
         </div>
     </div>
