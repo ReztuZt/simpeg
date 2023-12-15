@@ -12,7 +12,7 @@ $photoPath = $row_freelance['foto_path']; // Change 'foto_path' to the appropria
 <!-- Header Section -->
 <section class="content-header">
     <h1>
-        Data Detail Freelance
+        <span class="label label-info" style="font-size: 15px; background-color: #3498db; color: #fff; padding: 5px 10px; border-radius: 3px;"><?php echo $row_freelance['nama']; ?></span>
     </h1>
     <ol class="breadcrumb">
         <li><a href="index.php?controller=sistem&method=home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -28,21 +28,21 @@ $photoPath = $row_freelance['foto_path']; // Change 'foto_path' to the appropria
             <!-- Panel for Photo -->
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <img src="<?php echo $photoPath; ?>" alt="Freelance Photo" class="img-responsive">
+                    <img src="<?php echo $photoPath; ?>" alt="Freelance Photo" class="img-responsive" style="border-radius: 5px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
                 </div>
-                <div class="panel-footer">
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#uploadModal">Upload</button>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                <div class="panel-footer" style="background-color: #f9f9f9;">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#uploadModal"><i class="fa fa-cloud-upload"></i> Upload</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash"></i> Delete</button>
                 </div>
             </div>
         </div>
         <div class="col-lg-9">
             <div class="panel panel-default">
                 <!-- Panel Heading with Freelance Name -->
-                <div class="panel-heading bg-aqua">
-                    <i class="fa fa-user fa-fw"></i> Data Diri
+                <div class="panel-heading bg-aqua" style="color: #fff;">
+                    <i class="fa fa-user fa-fw"></i> Data Studio
                     <div class="pull-right">
-                        <span class="label label-info" style="font-size: 15px;"> Pegawai: <?php echo $row_freelance['nama']; ?></span>
+
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@ $photoPath = $row_freelance['foto_path']; // Change 'foto_path' to the appropria
                             <label class="control-label">Keterangan</label>
                             <p class="form-control-static"><?php echo $row_freelance['keterangan']; ?></p>
                         </div>
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal">Edit</button>
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil"></i> Edit</button>
                     </div> <!-- End of Bootstrap Grid System -->
                 </div> <!-- End of Panel Body -->
             </div> <!-- End of Panel -->
@@ -138,7 +138,7 @@ $photoPath = $row_freelance['foto_path']; // Change 'foto_path' to the appropria
                     <input type="hidden" name="employee_code" value="<?php echo $row_freelance['code']; ?>">
                     <input type="file" name="photo" required>
                     <br><br>
-                    <button type="submit" class="btn btn-primary">Unggah</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-cloud-upload"></i> Unggah</button>
                 </form>
             </div>
         </div>
@@ -160,7 +160,7 @@ $photoPath = $row_freelance['foto_path']; // Change 'foto_path' to the appropria
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                <a href="delete_photo.php?employee_code=<?php echo $row_freelance['code']; ?>" class="btn btn-danger">Hapus</a>
+                <a href="delete_photo.php?employee_code=<?php echo $row_freelance['code']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
             </div>
         </div>
     </div>

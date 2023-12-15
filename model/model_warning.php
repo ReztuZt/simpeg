@@ -16,6 +16,7 @@ class model_warning extends database
 
 	// QUERY UNTUK MENAMPILKAN DATA (SELECT)
 	function datapelanggaran($nip)
+	
 	{
 		$koneksi = $this->koneksi;
 		// SQL
