@@ -38,7 +38,7 @@ if (isset($_SESSION['nama_simpeg'], $_SESSION['username_simpeg'], $_SESSION['bag
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-    
+
 
     <?php
     $row_data = mysqli_fetch_array($data);
@@ -53,20 +53,23 @@ if (isset($_SESSION['nama_simpeg'], $_SESSION['username_simpeg'], $_SESSION['bag
     }
     ?>
 
-<style>
-        body {
-            font-size: 18px; /* Atur ukuran font untuk elemen body */
-        }
+    <style>
+      body {
+        font-size: 18px;
+        /* Atur ukuran font untuk elemen body */
+      }
 
-        h1 {
-            font-size: 36px; /* Atur ukuran font untuk elemen h1 */
-        }
+      h1 {
+        font-size: 36px;
+        /* Atur ukuran font untuk elemen h1 */
+      }
 
-        p {
-            font-size: 16px; /* Atur ukuran font untuk elemen p */
-        }
+      p {
+        font-size: 16px;
+        /* Atur ukuran font untuk elemen p */
+      }
 
-        /* Tambahkan aturan gaya lainnya sesuai kebutuhan Anda */
+      /* Tambahkan aturan gaya lainnya sesuai kebutuhan Anda */
     </style>
 
   </head>
@@ -163,7 +166,7 @@ if (isset($_SESSION['nama_simpeg'], $_SESSION['username_simpeg'], $_SESSION['bag
                   </li>
                 </ul>
               </li>
-                           <!-- Control Sidebar Toggle Button -->
+              <!-- Control Sidebar Toggle Button -->
 
               <li>
                 <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
@@ -220,7 +223,7 @@ if (isset($_SESSION['nama_simpeg'], $_SESSION['username_simpeg'], $_SESSION['bag
                 </span>
               </a>
               <ul class="treeview-menu">
-              <li><a href="index.php?controller=kategori&method=pangkat"><i class="fa fa-circle-o"></i> Data Pangkat / Golongan</a></li>
+                <li><a href="index.php?controller=kategori&method=pangkat"><i class="fa fa-circle-o"></i> Data Pangkat / Golongan</a></li>
                 <li><a href="index.php?controller=kategori&method=jabatan"><i class="fa fa-circle-o"></i> Data Jabatan</a></li>
                 <li><a href="index.php?controller=kategori&method=jenis"><i class="fa fa-circle-o"></i> Data Jenis Kepegawaian</a></li>
                 <li><a href="index.php?controller=kategori&method=status"><i class="fa fa-circle-o"></i> Data Status Kepegawaian</a></li>
@@ -246,7 +249,7 @@ if (isset($_SESSION['nama_simpeg'], $_SESSION['username_simpeg'], $_SESSION['bag
                 <i class="fa fa-tasks"></i> <span>Project</span>
               </a>
             </li>
-        
+
             <li>
               <a href="index.php?controller=gaji&method=select">
                 <i class="fa fa-money"></i> <span>Data Penggajian</span>
@@ -436,7 +439,7 @@ if (isset($_SESSION['nama_simpeg'], $_SESSION['username_simpeg'], $_SESSION['bag
         <link rel="stylesheet" href="bootstrap/dist/css/AdminLTE.min.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-        <link rel="stylesheet" href="bootstrap/dist/css/skins/_all-skins.min.min.css">
+        <link rel="stylesheet" href="bootstrap/dist/css/skins/_all-skins.min.css">
         <!-- Morris chart -->
         <link rel="stylesheet" href="bootstrap/bower_components/morris.js/morris.css">
         <!-- jvectormap -->
@@ -464,7 +467,7 @@ if (isset($_SESSION['nama_simpeg'], $_SESSION['username_simpeg'], $_SESSION['bag
         <?php
         }
         ?>
-        
+
       </head>
       <!-- warna sidebar-->
 
@@ -749,19 +752,19 @@ if (isset($_SESSION['nama_simpeg'], $_SESSION['username_simpeg'], $_SESSION['bag
     } else {
       echo "<script> 
                      alert('Maaf Anda Harus Login'); 
-                     window.location = 'http://localhost/Simpeg/';
+                     window.location = 'http://localhost/simpeg_test/';
                     </script>";
     }
   } else {
     echo "<script> 
                alert('Maaf Data Nip Tidak Ada'); 
-               window.location = 'http://localhost/Simpeg/';
+               window.location = 'http://localhost/simpeg_test/';
               </script>";
   }
 } else {
   echo "<script> 
                alert('Maaf! Anda Harus Login!'); 
-               window.location = 'http://localhost/Simpeg/';
+               window.location = 'http://localhost/simpeg_test/';
               </script>";
 }
 ?>

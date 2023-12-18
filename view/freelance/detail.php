@@ -38,12 +38,11 @@ $photoPath = $row_freelance['foto_path']; // Change 'foto_path' to the appropria
         </div>
         <div class="col-lg-9">
             <div class="panel panel-default">
-                <!-- Panel Heading with Freelance Name -->
-                <div class="panel-heading bg-aqua" style="color: #fff;">
+                <!-- Panel Heading with Freelance Name and Back Button -->
+                <div class="panel-heading bg-aqua" style="color: #fff; position: relative;">
+                    <a href="javascript:history.go(-1)" class="btn btn-primary" style="position: absolute; top: 10px; right: 10px;"><i class="fa fa-arrow-left"></i> Kembali</a>
                     <i class="fa fa-user fa-fw"></i> Data Studio
-                    <div class="pull-right">
-
-                    </div>
+                    <div class="pull-right"></div>
                 </div>
 
                 <!-- Panel Body for Freelance Details -->
@@ -78,50 +77,55 @@ $photoPath = $row_freelance['foto_path']; // Change 'foto_path' to the appropria
         </div> <!-- End of Main Content Section -->
     </div>
 </div>
-
 <!-- Edit Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-primary text-white">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title" id="editModalLabel">Edit Data Freelance</h4>
             </div>
             <div class="modal-body">
+
+                <!-- Form Edit -->
+                <!-- Form Edit -->
                 <!-- Form Edit -->
                 <form role="form" method="POST" action="index.php?controller=freelance&method=update_freelance" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label>Nama</label>
+                        <label class="control-label">Nama</label>
                         <input type="text" name="nama" value="<?php echo $row_freelance['nama']; ?>" class="form-control" placeholder="Nama" required>
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
+                        <label class="control-label">Email</label>
                         <input type="email" name="email" value="<?php echo $row_freelance['email']; ?>" class="form-control" placeholder="Email" required>
                     </div>
                     <div class="form-group">
-                        <label>No Telepon</label>
+                        <label class="control-label">No Telepon</label>
                         <input type="tel" name="no_telp" value="<?php echo $row_freelance['no_telp']; ?>" class="form-control" placeholder="Nomor Telepon" required>
                     </div>
                     <div class="form-group">
-                        <label>Keterangan</label>
+                        <label class="control-label">Keterangan</label>
                         <input type="text" name="keterangan" value="<?php echo $row_freelance['keterangan']; ?>" class="form-control" placeholder="Keterangan" required oninvalid="this.setCustomValidity('Masukan Keterangan')" oninput="setCustomValidity('')" autocomplete="off">
                         <input type="hidden" name="id" value="<?php echo $row_freelance['id']; ?>" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Code</label>
+                        <label class="control-label">No</label>
                         <input type="tel" name="code" value="<?php echo $row_freelance['code']; ?>" class="form-control" placeholder="Code" required>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                        <input type="submit" name="submit" class="btn btn-outline btn-xl" value="Simpan" data-toggle="tooltip" data-placement="top" title="Simpan">
+                        <button type="button" class="btn btn-xl btn-primary" data-dismiss="modal">Close</button>
+                        <button type="submit" name="submit" class="btn btn-xl btn-primary">Simpan</button>
                     </div>
                 </form>
+
+
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- Upload Modal -->
 <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel">

@@ -53,7 +53,7 @@ if ($_SESSION['level_simpeg'] == "admin") {
                                     <th width="25%">
                                         <center>No Rekening</center>
                                     </th>
-                                    <th width="15%">
+                                    <th width="10%">
                                         <center>Aksi</center>
                                     </th>
                                 </tr>
