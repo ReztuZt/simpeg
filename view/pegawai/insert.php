@@ -1,7 +1,7 @@
 <title><?php echo $row_data['nama'];?> | Insert Pegawai</title>
 
 
-            <!-- INI UNTUK JUDUL -->
+            <!-- INI UNTUK JUDUL -->hbbhhbb
             <section class="content-header">
               <h1>
                Insert Data Pegawai
